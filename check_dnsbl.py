@@ -35,7 +35,7 @@ try:
     host = args.host
     warn = args.warn
     crit = args.crit
-    providers = args.providers
+    #  providers = args.providers
 
     # Start with a clean slate
     ok_msg = []
