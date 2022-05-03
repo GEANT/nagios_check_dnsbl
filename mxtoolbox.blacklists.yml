@@ -64,21 +64,8 @@ blacklists:
   # service seems dead: https://mxtoolbox.com/problem/blacklist/ibm-dns-blacklist
 
   # ICMFORBIDDEN
-  # http://sunsite.icm.edu.pl/spam/bh.html lists several other services?
-  - lists.dsbl.org
-  - multihop.dsbl.org
-  - inputs.orbz.org
-  - outputs.orbz.org
-  - relays.ordb.org
-  - relays.osirusoft.com
-  - outputs.relays.osirusoft.com
-  - spammers.v6net.org
-  - dev.null.dk
-  - orbs.dorkslayers.com
-  - xbl.selwerd.cx
-  - blackholes.five-ten-sg.com
-  - bl.spamcop.net
-  - forbidden.icm.edu.pl
+  # http://sunsite.icm.edu.pl/spam/bh.html lists several other services
+  # Most of them are ancient/offline
 
   # IMP SPAM & IMP WORM
   - dnsrbl.imp.ch
