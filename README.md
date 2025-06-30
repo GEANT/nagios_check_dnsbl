@@ -4,34 +4,45 @@ A Nagios check to monitor if a host/IP address appears in DNS based blacklists
 
 ## Requirements
 
-Nagios or Icinga, Python3 with the following modules:
-
-* pydnsbl
-* argparse
-* ipaddress
+* python3.6 or newer
+* [pydnsbl](https://pypi.org/project/pydnsbl/)
 
 ## Usage
 
 ```lang-none
-usage: check_dnsbl.py [-h] --host HOST [--warn WARN] [--crit CRIT] [--providers PROVIDERS] [--verbose]
+usage: check_dnsbl.py [-h] --host HOST [--warn WARN] [--crit CRIT]
+                      [--providers PROVIDERS] [--verbose]
 
 Check if a hostname/IP address appears in DNS based blacklists
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   --host HOST           the IP/host to check
-  --warn WARN, -w WARN  WARN when host appears in this many blacklists. Defaults to 1
-  --crit CRIT, -c CRIT  CRIT when host appears in this many blacklists. Defaults to 2
-  --providers PROVIDERS, --blacklists PROVIDERS
-                        Comma or space separated list of DNS blacklist provider hostnames. Defaults to: all.s5h.net, aspews.ext.sorbs.net,
-                        b.barracudacentral.org, bl.nordspam.com, bl.spamcop.net, blackholes.five-ten-sg.com, blacklist.woody.ch, bogons.cymru.com,
-                        cbl.abuseat.org, combined.abuse.ch, combined.rbl.msrbl.net, db.wpbl.info, dnsbl-2.uceprotect.net, dnsbl-3.uceprotect.net,
-                        dnsbl.cyberlogic.net, dnsbl.dronebl.org, dnsbl.sorbs.net, drone.abuse.ch, dul.ru, dyna.spamrats.com, images.rbl.msrbl.net,
-                        ips.backscatterer.org, ix.dnsbl.manitu.net, korea.services.net, matrix.spfbl.net, noptr.spamrats.com,
-                        phishing.rbl.msrbl.net, proxy.bl.gweep.ca, proxy.block.transip.nl, psbl.surriel.com, rbl.interserver.net,
-                        relays.bl.gweep.ca, relays.bl.kundenserver.de, relays.nether.net, residential.block.transip.nl, singular.ttk.pte.hu,
-                        spam.dnsbl.sorbs.net, spam.rbl.msrbl.net, spam.spamrats.com, spambot.bls.digibase.ca, spamlist.or.kr, spamrbl.imp.ch,
-                        spamsources.fabel.dk, ubl.lashback.com, virbl.bit.nl, virus.rbl.msrbl.net, virus.rbl.jp, wormrbl.imp.ch, z.mailspike.net,
+  --warn, -w WARN       WARN when host appears in this many blacklists.
+                        Defaults to 1
+  --crit, -c CRIT       CRIT when host appears in this many blacklists.
+                        Defaults to 2
+  --providers, --blacklists PROVIDERS
+                        Comma or space separated list of DNS blacklist
+                        provider hostnames. Defaults to: all.s5h.net,
+                        aspews.ext.sorbs.net, b.barracudacentral.org,
+                        bl.nordspam.com, blackholes.five-ten-sg.com,
+                        blacklist.woody.ch, bogons.cymru.com, cbl.abuseat.org,
+                        combined.abuse.ch, combined.rbl.msrbl.net,
+                        db.wpbl.info, dnsbl-2.uceprotect.net,
+                        dnsbl-3.uceprotect.net, dnsbl.cyberlogic.net,
+                        dnsbl.sorbs.net, drone.abuse.ch, images.rbl.msrbl.net,
+                        ips.backscatterer.org, korea.services.net,
+                        matrix.spfbl.net, phishing.rbl.msrbl.net,
+                        proxy.bl.gweep.ca, proxy.block.transip.nl,
+                        psbl.surriel.com, rbl.interserver.net,
+                        relays.bl.gweep.ca, relays.bl.kundenserver.de,
+                        relays.nether.net, residential.block.transip.nl,
+                        singular.ttk.pte.hu, spam.dnsbl.sorbs.net,
+                        spam.rbl.msrbl.net, spambot.bls.digibase.ca,
+                        spamrbl.imp.ch, spamsources.fabel.dk,
+                        ubl.lashback.com, virbl.bit.nl, virus.rbl.msrbl.net,
+                        virus.rbl.jp, wormrbl.imp.ch, z.mailspike.net,
                         zen.spamhaus.org.
   --verbose, -v         Show verbose output
 ```
@@ -105,8 +116,8 @@ zen.spamhaus.org
 
 ```sh
 # Use custom blacklists
-/check_dnsbl.py --host de-smtp-1.mimecast.com --blacklists zen.spamhaus.org,proxy.block.transip.nl -v
-OK: None of de-smtp-1.mimecast.com's IP addresses (62.140.10.21, 51.163.159.21) appear on a blacklist
+./check_dnsbl.py --host service-alpha-inbound-a.mimecast.com --blacklists zen.spamhaus.org,proxy.block.transip.nl -v
+OK: None of service-alpha-inbound-a.mimecast.com's IP addresses (91.220.42.231, 195.130.217.231) appear on a blacklist
 Blacklists used:
 
 zen.spamhaus.org
