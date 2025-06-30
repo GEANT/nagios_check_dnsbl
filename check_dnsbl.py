@@ -15,8 +15,7 @@ def nagios_exit(message, code):
 
 def is_ipaddr(string):
     try:
-        ip = ipaddress.ip_address(string)
-        return True
+        return ipaddress.ip_address(string)
     except ValueError:
         return False
 
